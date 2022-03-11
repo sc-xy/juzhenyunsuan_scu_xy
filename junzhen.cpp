@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
 #include<Windows.h>
 using namespace std;
-float a[100][100],b[100][100],c[100][100],tem1,tem2,tem3;
+float a[100][100],b[100][100],c[100][100],d[100][100],tem1,tem2,tem3;
 int require,nexty;
-int jc_hang,jc_lie;
-bool cte=false;
+int jc_hang,jc_lie,jd_lie,jd_hang;
+bool cte=false,dte=false;
 void chengfa()//乘法函数
 {
     int m,n,i,j,ch;
@@ -159,6 +159,7 @@ void gaosiqiuni()//求逆矩阵
     for(int x=1;x<=m;x++)for(int y=n+1;y<=2*n;y++)//扩增矩阵
     {
         if(y-x==n)a[x][y]=1.;
+        else a[x][y]=0.;
     }
     for(int x=1,y;x<=n;x++)//创建阶梯矩阵
     {
@@ -192,6 +193,15 @@ void gaosiqiuni()//求逆矩阵
             {
                 a[j][k]-=tem3*a[i][k];
             }
+        }
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j<=2*n;j++)
+            {
+                cout<<a[i][j]<<" ";
+                c[i][j-n]=a[i][j];
+            }
+            cout<<endl;
         }
     }
     cout<<"逆矩阵结果为："<<endl;
